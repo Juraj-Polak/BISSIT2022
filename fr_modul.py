@@ -2,25 +2,40 @@
 import os
 import cv2
 
-# Constants
-KNOWN_FACES_DIR = 'knownFaces'
-UNKNOWN_FACES_DIR = 'unknownFaces'
-TOLERANCE = 0.7
-FRAME_THICKNESS = 3
-FONT_THICKNESS = 2
-MODEL = 'cnn'
 
-# Variables
-known_faces = []
-known_names = []
+# Face detection
+# Classifier
+casc_path = os.path.dirname(cv2.__file__)+"/data/haarcascade_frontalface_default.xml"
+face_cascade = cv2.CascadeClassifier(casc_path)
 
-for directory in os.listdir(KNOWN_FACES_DIR):
-    for file in os.listdir(f'{KNOWN_FACES_DIR}/{directory}'):
-        known_faces.append(f'{KNOWN_FACES_DIR}/{directory}/{file}')
-        known_names.append(directory)
+# Video feed
+video = cv2.VideoCapture(0)
 
-# for _ in range(len(known_faces)):
-#     cv2.imshow('xicht', cv2.imread(known_faces[_]))
-#     cv2.waitKey(0)
+while True:
+    # Frame by frame capture
+    ret, frames = video.read()
 
-# cv2.destroyAllWindows 
+    # Convertion to greyscale
+    grey = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(
+        grey,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(30,30),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+
+    # Highlight faces
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frames, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+    # Dispaly video
+    cv2.imshow('Video', frames)
+
+    # Exit condition
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+video.release()
+cv2.destroyAllWindows()
