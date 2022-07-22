@@ -22,7 +22,7 @@ def video_detection():
         faces = face_cascade.detectMultiScale(
             grey,
             scaleFactor=1.1,
-            minNeighbors=5,
+            minNeighbors=3,
             minSize=(30,30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
