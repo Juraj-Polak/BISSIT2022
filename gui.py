@@ -38,7 +38,7 @@ logo_label.pack()
 
 # Buttons
 webcam = tk.Button(main, font='arial', text='Webcam input', command=fr_modul.video_detection).place(relx=0.075, rely=0.53, relheight=0.2, relwidth=0.35)
-file = tk.Button(main, font='arial', text='File input').place(relx=0.575, rely=0.53, relheight=0.2, relwidth=0.35)
+file = tk.Button(main, font='arial', text='File input', command=fr_modul.photo_detection).place(relx=0.575, rely=0.53, relheight=0.2, relwidth=0.35)
 help = tk.Button(main, font='arial', text='Help').place(relx=0.425, rely=0.78, relheight=0.12, relwidth=0.15)
 
 main.mainloop()
