@@ -13,10 +13,11 @@ def dispaly_help():
     # New window for help
     window = tk.Toplevel(main)
     window.focus_set()
-    window.geometry(f'300x500+{center_x + 200}+{center_y}')
+    window.geometry(f'390x200+{center_x + 160}+{center_y - 20}')
     window.iconbitmap('./assets/icon.ico')
     window.title('Help')
-    tk.Label(window, text=data).pack()
+    window.configure(bg='white')
+    tk.Label(window, text=data, bg='white').pack()
 
 # Main window
 main = tk.Tk()
