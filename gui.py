@@ -4,6 +4,20 @@ from turtle import window_height, window_width
 from PIL import ImageTk, Image
 import fr_modul
 
+# Functions
+def dispaly_help():
+    file = open('./help.txt', 'r')
+    data = file.read()
+    file.close()
+
+    # New window for help
+    window = tk.Toplevel(main)
+    window.focus_set()
+    window.geometry(f'300x500+{center_x + 200}+{center_y}')
+    window.iconbitmap('./assets/icon.ico')
+    window.title('Help')
+    tk.Label(window, text=data).pack()
+
 # Main window
 main = tk.Tk()
 main.title('Attendance manager')
@@ -37,8 +51,8 @@ logo_label = tk.Label(logo_frame, image = logo)
 logo_label.pack()
 
 # Buttons
-webcam = tk.Button(main, font='arial', text='Webcam input', command=fr_modul.video_detection).place(relx=0.075, rely=0.53, relheight=0.2, relwidth=0.35)
-file = tk.Button(main, font='arial', text='File input', command=fr_modul.photo_detection).place(relx=0.575, rely=0.53, relheight=0.2, relwidth=0.35)
-help = tk.Button(main, font='arial', text='Help').place(relx=0.425, rely=0.78, relheight=0.12, relwidth=0.15)
+webcam_button = tk.Button(main, font='arial', text='Webcam input', command=fr_modul.video_detection).place(relx=0.075, rely=0.53, relheight=0.2, relwidth=0.35)
+file_button = tk.Button(main, font='arial', text='File input', command=fr_modul.photo_detection).place(relx=0.575, rely=0.53, relheight=0.2, relwidth=0.35)
+help_button = tk.Button(main, font='arial', text='Help', command=dispaly_help).place(relx=0.425, rely=0.78, relheight=0.12, relwidth=0.15)
 
 main.mainloop()
