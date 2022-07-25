@@ -14,15 +14,15 @@ def video_detection():
 
     while True:
         # Frame by frame capture
-        ret, frames = video.read()
+        _, frames = video.read()
 
         # Convertion to greyscale
         grey = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
 
         faces = face_cascade.detectMultiScale(
             grey,
-            scaleFactor=1.1,
-            minNeighbors=3,
+            scaleFactor=1.2,
+            minNeighbors=4,
             minSize=(30,30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
