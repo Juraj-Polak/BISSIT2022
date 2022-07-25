@@ -1,3 +1,8 @@
 Help
-serus
-skakal pes pres oves
+The application is a face detection and recognition system for the automated capturing of class attendance.
+The application identifies a person based on key parameters and verifying their identity and authorization using a database.
+This technology has used machine learning tto create this solution.
+
+In the user interface, the user can input images either through live webcam input of through file input.
+One can exit the webcam input by pressing 'q'
+
