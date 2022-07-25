@@ -10,3 +10,5 @@ Modules used:
     - tkinter
     - turtle
     - pillow (PIL)
+
+Special thanks to Murtaza's Workshop, whose youtube tutorial was used in production of this project.
