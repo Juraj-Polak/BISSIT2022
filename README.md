@@ -6,6 +6,7 @@ Modules used:
     - os
     - open cv (cv2)
     - face_recognition
+    - datetime
     - tkinter
     - turtle
     - pillow (PIL)
